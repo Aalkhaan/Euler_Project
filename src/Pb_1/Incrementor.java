@@ -7,7 +7,7 @@ public class Incrementor {
 
     private int state = 0;
 
-    private final int[] deltas = new int[] {2, 1, 3, 1, 2, 3, 3, 2, 1, 3, 1, 3, 2, 3};
+    private final int[] deltas = new int[] {2, 1, 3, 1, 2, 3, 3, 2, 1, 3, 1, 2, 3, 3};
 
     public int getI() {
         return i;
@@ -21,7 +21,7 @@ public class Incrementor {
         i += deltas[state];
 
         state++;
-        if (state == 13) {
+        if (state == 14) {
             state = 0;
         }
     }
