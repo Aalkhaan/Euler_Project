@@ -3,7 +3,7 @@ package Tools;
 import java.math.BigInteger;
 import java.util.Objects;
 
-public class Tool {
+public class Tools {
     public static boolean isPrime(long n) {
         if(n < 2) return false;
         if(n == 2 || n == 3) return true;
@@ -65,5 +65,6 @@ public class Tool {
     }
 
     public static long sumOfSquares(long n) {
+        return n * (n + 1) * ((2 * n) + 1) / 6;
     }
 }

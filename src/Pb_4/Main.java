@@ -1,5 +1,5 @@
 package Pb_4;
-import static Tools.Tool.*;
+import static Tools.Tools.*;
 
 public class Main {
     public static void main(String[] args) {
