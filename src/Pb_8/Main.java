@@ -1,4 +1,5 @@
 package Pb_8;
+
 import java.io.IOException;
 import java.math.BigInteger;
 import java.nio.file.Files;
@@ -25,14 +26,14 @@ public class Main {
             it.next();
         }
 
-        BigInteger product = new BigInteger("0");
+        BigInteger maxProduct = new BigInteger("0");
         BigInteger buffer = new BigInteger("1");
 
         for (BigInteger i : digits) {
             buffer = buffer.multiply(i);
         }
-        if (buffer.compareTo(product) > 0) {
-            product = buffer;
+        if (buffer.compareTo(maxProduct) > 0) {
+            maxProduct = buffer;
         }
 
         while (it.current() != CharacterIterator.DONE) {
@@ -43,12 +44,12 @@ public class Main {
                 for (BigInteger i : digits) {
                     buffer = buffer.multiply(i);
                 }
-                if (buffer.compareTo(product) > 0) {
-                    product = buffer;
+                if (buffer.compareTo(maxProduct) > 0) {
+                    maxProduct = buffer;
                 }
             }
             it.next();
         }
-        System.out.println(product);
+        System.out.println(maxProduct);
     }
 }
