@@ -2,19 +2,21 @@ package Pb_12;
 
 public class Main {
     public static void main(String[] args) {
-        long triangleNumber = 6;
-        int natural = 3;
-        long evenNumber = 4;
-        int nbDivisors = 4;
+        int triangleNumber = 0;
+        int naturalNumber = 0;
+        int nbDivisors = 0;
         while (nbDivisors < 500) {
-            evenNumber <<= 1;
-            //triangleNumber = evenNumber * (evenNumber - 1) >> 1;
-            triangleNumber += natural;
-            nbDivisors = 2;
-            for (long i = 2; i < triangleNumber; i++) {
+            nbDivisors = 0;
+            naturalNumber++;
+            triangleNumber += naturalNumber;
+            int i;
+            for (i = 1; i*i < triangleNumber; i++) {
                 if (triangleNumber % i == 0) {
-                    nbDivisors++;
+                    nbDivisors += 2;
                 }
+            }
+            if (i*i == triangleNumber) {
+                nbDivisors++;
             }
         }
         System.out.println(triangleNumber);

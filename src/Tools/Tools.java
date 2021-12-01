@@ -67,4 +67,28 @@ public class Tools {
     public static long sumOfSquares(long n) {
         return n * (n + 1) * ((2 * n) + 1) / 6;
     }
+
+    /**
+     * Computes and returns {@code a} to the power of {@code b}.
+     */
+    public static int pow(int a, int b) {
+        int result = a;
+        for (int i = 1; i < b; i++) {
+            result *= a;
+        }
+        return result;
+    }
+
+    /**
+     * Computes and returns {@code a} to the power of {@code b}.
+     */
+    public static long pow(long a, int b) {
+        if (b == 0) {
+            return 1;
+        }
+        if (b < 0) {
+            throw new IllegalArgumentException("Power > 0 is required");
+        }
+        return a * pow(a, b - 1);
+    }
 }

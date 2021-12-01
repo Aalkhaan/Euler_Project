@@ -12,7 +12,7 @@ public class Main {
     public static void main(String[] args) {
         String numberAsString = "";
         try {
-            String stringPath = System.getProperty("user.dir") + "\\text_files\\pb_8_large_number.txt";
+            String stringPath = System.getProperty("user.dir") + "/text_files/pb_8_large_number.txt";
             Path path = Path.of(stringPath);
             numberAsString = Files.readString(path);
         } catch (IOException e) {
