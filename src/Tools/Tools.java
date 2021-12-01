@@ -1,7 +1,6 @@
 package Tools;
 
 import java.math.BigInteger;
-import java.util.Objects;
 
 public class Tools {
     public static boolean isPrime(long n) {
@@ -72,11 +71,13 @@ public class Tools {
      * Computes and returns {@code a} to the power of {@code b}.
      */
     public static int pow(int a, int b) {
-        int result = a;
-        for (int i = 1; i < b; i++) {
-            result *= a;
+        if (b == 0) {
+            return 1;
         }
-        return result;
+        if (b < 0) {
+            throw new IllegalArgumentException("Power > 0 is required");
+        }
+        return a * pow(a, b - 1);
     }
 
     /**
@@ -90,5 +91,39 @@ public class Tools {
             throw new IllegalArgumentException("Power > 0 is required");
         }
         return a * pow(a, b - 1);
+    }
+
+    /**
+     * Computes and returns {@code a} to the power of {@code b}.
+     */
+    public static BigInteger pow(BigInteger a, int b) {
+        if (b == 0) {
+            return BigInteger.ONE;
+        }
+        if (b < 0) {
+            throw new IllegalArgumentException("Power > 0 is required");
+        }
+        return a.multiply(pow(a, b - 1));
+    }
+
+    private static int collatz(long startingNumber) {
+        if ((startingNumber & 1) == 0) {
+            return 1 + collatz(startingNumber >> 1);
+        }
+        if (startingNumber == 1) {
+            return 1;
+        }
+        return 1 + collatz(3 * startingNumber + 1);
+
+    }
+
+    /**
+     * Returns the length of the Collatz sequence starting with the given number.
+     */
+    public static int collatzLength(long startingNumber) {
+        if (startingNumber < 0) {
+            throw new IllegalArgumentException("Starting number must be positive");
+        }
+        return collatz(startingNumber);
     }
 }

@@ -3,6 +3,7 @@ package Pb_13;
 import Tools.Tools;
 
 import java.io.IOException;
+import java.math.BigInteger;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -17,24 +18,29 @@ public class Main {
             e.printStackTrace();
         }
 
-        long[] numbers = new long[100];
-        long sum = 0;
         char character;
         int digit;
-        long power;
+        BigInteger power;
+        BigInteger sum = new BigInteger("0");
+        BigInteger number;
         for (int i = 0; i < 100; i++) {
-            numbers[i] = 0;
-            for (int j = 0; j < 10; j++) {
-                character = numbersAsString.charAt(51 * i + 40 + j);
+            number = new BigInteger("0");
+            for (int j = 0; j < 50; j++) {
+                character = numbersAsString.charAt(51 * i + j);
                 digit = character - 48;
-                power = Tools.pow(10L, (9 - j));
-                numbers[i] += digit * power;
+                power = Tools.pow(BigInteger.TEN, (49 - j));
+                number = number.add(power.multiply(BigInteger.valueOf(digit)));
             }
 
-            sum += numbers[i];
+            sum = sum.add(number);
         }
 
-       System.out.println(sum % 10000000000L);
+        StringBuilder first10Digits = new StringBuilder();
+        String sumAsString = sum.toString();
+        for (int i = 0; i < 10; i++) {
+            first10Digits.append(sumAsString.charAt(i));
+        }
 
+        System.out.println(first10Digits);
     }
 }
