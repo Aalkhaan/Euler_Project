@@ -126,4 +126,10 @@ public class Tools {
         }
         return collatz(startingNumber);
     }
+
+    public static BigInteger factorial(BigInteger n) {
+        if (n.compareTo(BigInteger.ZERO) < 0) throw new IllegalArgumentException("n >= 0 required");
+        if (n.compareTo(BigInteger.ONE) <= 0) return BigInteger.ONE;
+        return n.multiply(factorial(n.subtract(BigInteger.ONE)));
+    }
 }
