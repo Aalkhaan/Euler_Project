@@ -27,7 +27,11 @@ public class Main {
                 }
                 currentLine = reader.readLine();
             }
-            System.out.println(numbersLines);
+            for (int i = numbersLines.size() - 2; i >= 0; i--) {
+                for (int j = 0; j < numbersLines.get(i).size(); j++) {
+                    numbersLines.get(i).get(j) =
+                }
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
